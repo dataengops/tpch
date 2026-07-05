@@ -45,7 +45,7 @@ This will do the following,
 
 # Reproducing the SF400 cross-engine benchmark
 
-This fork adds an **SF400 (~118 GB Parquet)** cross-engine comparison of **Spark,
+This fork adds an **SF400 (~157 GB Parquet)** cross-engine comparison of **Spark,
 Trino, Polars, and DuckDB**, run cold single-pass over all 22 TPC-H queries. The
 measured numbers live in `benchmarks/local_ec2_sf400_256g.md`.
 
