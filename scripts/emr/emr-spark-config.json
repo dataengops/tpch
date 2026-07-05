@@ -1,0 +1,16 @@
+[
+  {
+    "Classification": "spark-defaults",
+    "Properties": {
+      "spark.executor.cores": "5",
+      "spark.executor.memory": "16g",
+      "spark.executor.memoryOverhead": "2g",
+      "spark.driver.cores": "4",
+      "spark.driver.memory": "12g",
+      "spark.dynamicAllocation.enabled": "true",
+      "spark.dynamicAllocation.maxExecutors": "9",
+      "spark.sql.session.timeZone": "UTC",
+      "spark.sql.parquet.enableVectorizedReader": "true"
+    }
+  }
+]

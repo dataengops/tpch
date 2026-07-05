@@ -1,0 +1,25 @@
+[
+  {
+    "Classification": "trino-connector-hive",
+    "Properties": {
+      "hive.metastore": "glue",
+      "hive.recursive-directories": "true",
+      "hive.parquet.use-column-names": "true",
+      "parquet.max-footer-read-size": "128MB",
+      "fs.hadoop.enabled": "true",
+      "hive.config.resources": "/etc/hadoop/conf/core-site.xml,/etc/hadoop/conf/hdfs-site.xml"
+    }
+  },
+  {
+    "Classification": "trino-config",
+    "Properties": {
+      "node-scheduler.include-coordinator": "true",
+      "query.max-memory-per-node": "55GB",
+      "query.max-memory": "150GB",
+      "query.max-total-memory": "280GB",
+      "spill-enabled": "true",
+      "spiller-spill-path": "/mnt1/trino-spill",
+      "spill-compression-codec": "LZ4"
+    }
+  }
+]

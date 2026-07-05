@@ -1,0 +1,39 @@
+# IDE
+.idea/
+.vscode/
+
+# Python
+__pycache__/
+.mypy_cache/
+.ruff_cache/
+.venv/
+
+# Rust
+.cargo/
+target/
+Cargo.lock
+
+# Dask
+dask_user_space/
+dask-worker-space/
+
+# Spark
+**/spark-warehouse
+
+# Perf
+perf.*
+**/flamegraph.svg
+
+# Other
+.swp
+*.tbl
+*.o
+dbgen
+qgen
+
+# Project
+/data/tables/
+/output/
+.env*
+ec2.pem
+/datain

@@ -1,0 +1,57 @@
+name: Lint
+
+on:
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ruff:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Get ruff version from requirements file
+        id: version
+        run: |
+          VERSION=$(grep -m 1 -oP 'ruff==\K(.*)' requirements-dev.txt)
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - uses: chartboost/ruff-action@v1
+        with:
+          version: ${{ steps.version.outputs.version }}
+          args: check --no-fix
+
+      - uses: chartboost/ruff-action@v1
+        with:
+          version: ${{ steps.version.outputs.version }}
+          args: format --diff
+
+  mypy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install -r requirements-dev.txt
+
+      # Allow untyped calls for older Python versions
+      # Code in scripts/aws_glue.py requires PySpark<4
+      - name: Run mypy (PySpark from requirements.txt)
+        run: |
+          mypy
+
+      - name: Run mypy (PySpark<4)
+        run: |
+          pip install "pyspark<4"
+          mypy

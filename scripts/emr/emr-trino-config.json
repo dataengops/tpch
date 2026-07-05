@@ -1,0 +1,20 @@
+[
+  {
+    "Classification": "trino-connector-hive",
+    "Properties": {
+      "hive.metastore": "glue",
+      "hive.recursive-directories": "true",
+      "hive.parquet.use-column-names": "true"
+    }
+  },
+  {
+    "Classification": "trino-config",
+    "Properties": {
+      "query.max-memory-per-node": "80GB",
+      "query.max-memory": "150GB",
+      "spill-enabled": "true",
+      "spiller-spill-path": "/mnt1/trino-spill",
+      "spill-compression-enabled": "true"
+    }
+  }
+]
